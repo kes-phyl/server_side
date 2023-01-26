@@ -10,9 +10,19 @@ findAll(): string{
 }
 
 @Get(':id')
-  findOne(@Param() param): string{
-    return `item ${param.id}`;
+  findOne(@Param('id') id): string{
+    return `item ${id}`;
 }
+
+@Delete(':id')
+ delete(@Param('id') id): string{
+    return `Delete ${id} successfully`
+ }
+
+ @Put(':id')
+ update(@Body() updateItemDto: CreateItemDto, @Param('id') id): string{
+        return `Update ${id} - Name: ${updateItemDto.name}, Description ${updateItemDto.description}`
+ }
 
 @Post()
 create(@Body() createItemDto: CreateItemDto): string{
